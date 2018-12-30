@@ -2,7 +2,11 @@
   <li (click)="setDir(0, 'iw-introspection/records')">records/</li>
   <li (click)="setDir(0, 'iw-introspection/rpcs')">rpcs/</li>
   <li (click)="setDir(0, 'iw-introspection/channels')">channels/</li>
-  <li>nodes/</li>
+  <li (click)="showNodes()">nodes/</li>
 </ul>
-
-<app-directory-view *ngFor="let dir of dirs, index as i" [root]="dir" (openDir)="setDir(i + 1, $event)"></app-directory-view>
+<div *ngIf=" ! nodeMode">
+  <app-directory-view *ngFor="let dir of dirs, index as i" [root]="dir" (openDir)="setDir(i + 1, $event)"></app-directory-view>
+</div>
+<div *ngIf="nodeMode">
+  <app-record-view *ngFor="let node of nodes" [recordName]="node"></app-record-view>
+</div>

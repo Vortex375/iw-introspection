@@ -40,6 +40,6 @@ export class RecordViewComponent implements OnInit, OnDestroy {
   }
 
   private update(data) {
-    this.content = JSON.stringify(data)
+    this.content = JSON.stringify(data, undefined, 2)
   }
 }

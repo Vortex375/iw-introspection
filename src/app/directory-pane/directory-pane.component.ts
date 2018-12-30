@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DeepstreamService } from '../deepstream.service';
+
+import * as _ from "lodash"
 
 @Component({
   selector: 'app-directory-pane',
@@ -7,11 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectoryPaneComponent implements OnInit {
 
-  dirs = []
+  dirs: string[] = []
+  nodes: string[] = []
+  nodeMode = false
 
-  constructor() { }
+  constructor(private dsService: DeepstreamService) { }
 
   ngOnInit() {
+    this.dsService.getDeepstream().presence.getAll((names) => {
+      this.nodes = _.map(names, name => `iw-introspection/nodes/${name}`)
+    })
+    this.dsService.getDeepstream().presence.subscribe((name, loggedIn) => {
+      const index = _.findIndex(this.nodes, node => node.endsWith(name))
+      if (loggedIn) {
+        if (index >= 0) {
+          return
+        }
+        this.nodes.push(`iw-introspection/nodes/${name}`)
+      } else {
+        this.nodes.splice(index, 1)
+      }
+    })
   }
 
   setDir(index: number, path: string) {
@@ -24,6 +43,11 @@ export class DirectoryPaneComponent implements OnInit {
     if (index < this.dirs.length) {
       this.dirs.splice(index, this.dirs.length - index)
     }
+    this.nodeMode = false
     this.dirs.push(path)
+  }
+
+  showNodes() {
+    this.nodeMode = true
   }
 }

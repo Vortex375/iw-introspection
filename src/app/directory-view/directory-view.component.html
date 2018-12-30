@@ -1,0 +1,4 @@
+<ul>
+  <li *ngFor="let dir of subdirs" (click)="openSubdir(dir)">{{dir}}</li>
+</ul>
+<app-record-view *ngFor="let rec of records" [recordName]="rec"></app-record-view>

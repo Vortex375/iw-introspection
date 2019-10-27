@@ -23,6 +23,7 @@ export class DirectoryViewComponent implements OnInit {
   root: string;
   subdirs = [];
   records = [];
+  activeDirectory = -1;
 
   constructor(private dsService: DeepstreamService) {
     this.ds = dsService.getDeepstream();
@@ -37,7 +38,8 @@ export class DirectoryViewComponent implements OnInit {
     this.records = _.map(_.filter(data, s => ! s.endsWith('/')), s => path.join(this.root, s));
   }
 
-  openSubdir(subdir: string) {
+  openSubdir(subdir: string, index: number) {
     this.openDir.emit(path.join(this.root, subdir));
+    this.activeDirectory = index;
   }
 }

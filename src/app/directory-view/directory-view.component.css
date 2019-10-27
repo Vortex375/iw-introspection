@@ -15,3 +15,7 @@ ul {
 li {
   cursor: pointer;
 }
+
+li.active {
+  background-color: lightblue;
+}

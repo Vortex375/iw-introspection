@@ -15,6 +15,10 @@ li {
   cursor: pointer;
 }
 
+li.active {
+  background-color: lightblue;
+}
+
 .node-view {
   display: flex;
   flex-direction: column;

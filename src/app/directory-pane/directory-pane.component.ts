@@ -17,8 +17,9 @@ export class DirectoryPaneComponent implements OnInit {
   constructor(private dsService: DeepstreamService) { }
 
   ngOnInit() {
-    this.dsService.getDeepstream().presence.getAll((names) => {
+    this.dsService.getDeepstream().presence.getAll((err, names) => {
       this.nodes = _.map(names, name => `iw-introspection/nodes/${name}`);
+      console.log('nodes', this.nodes);
     });
     this.dsService.getDeepstream().presence.subscribe((name, loggedIn) => {
       const index = _.findIndex(this.nodes, node => node.endsWith(name));
@@ -30,6 +31,7 @@ export class DirectoryPaneComponent implements OnInit {
       } else {
         this.nodes.splice(index, 1);
       }
+      console.log('nodes', this.nodes);
     });
   }
 

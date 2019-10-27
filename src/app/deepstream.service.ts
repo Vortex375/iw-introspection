@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
 
-import * as deepstream from "deepstream.io-client-js"
-
-const DEEPSTREAM_CONFIG = {
-  transports: ["websocket"]
-}
+import fuckthis, { Client } from '@deepstream/client';
+import { Options } from '@deepstream/client/dist/client-options';
+const deepstream: (url: string, options?: Partial<Options>) => Client = fuckthis as any;
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeepstreamService {
 
-  private readonly ds: deepstreamIO.Client
+  private readonly ds: Client;
 
-  constructor() { 
-    const hostname = window.location.hostname
-    this.ds = deepstream(hostname + ":6020", DEEPSTREAM_CONFIG)
-    this.ds.login()
+  constructor() {
+    const hostname = window.location.hostname;
+    this.ds = deepstream(hostname + ':6020');
+    this.ds.login();
   }
 
-  getDeepstream(): deepstreamIO.Client {
-    return this.ds
+  getDeepstream(): Client {
+    return this.ds;
   }
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DeepstreamService } from '../deepstream.service';
 
-import * as path from "path-browserify"
-import * as _ from "lodash"
+import * as path from 'path-browserify';
+import * as _ from 'lodash';
+import { Client } from '@deepstream/client';
 
-const INDEX_RECORD = ".iw-index"
+const INDEX_RECORD = '.iw-index';
 
 @Component({
   selector: 'app-directory-view',
@@ -13,30 +14,30 @@ const INDEX_RECORD = ".iw-index"
 })
 export class DirectoryViewComponent implements OnInit {
 
-  private readonly ds: deepstreamIO.Client
+  private readonly ds: Client;
 
   @Output()
-  openDir: EventEmitter<string> = new EventEmitter()
+  openDir: EventEmitter<string> = new EventEmitter();
 
   @Input()
-  root: string
-  subdirs = []
-  records = []
+  root: string;
+  subdirs = [];
+  records = [];
 
-  constructor(private dsService: DeepstreamService) { 
-    this.ds = dsService.getDeepstream()
+  constructor(private dsService: DeepstreamService) {
+    this.ds = dsService.getDeepstream();
   }
 
   ngOnInit() {
-    this.ds.record.getRecord(path.join(this.root, INDEX_RECORD)).subscribe((data) => this.update(data), true)
+    this.ds.record.getRecord(path.join(this.root, INDEX_RECORD)).subscribe(undefined, (data) => this.update(data), true);
   }
 
   private update(data) {
-    this.subdirs = _.filter(data, s => s.endsWith("/"))
-    this.records = _.map(_.filter(data, s => ! s.endsWith("/")), s => path.join(this.root, s))
+    this.subdirs = _.filter(data, s => s.endsWith('/'));
+    this.records = _.map(_.filter(data, s => ! s.endsWith('/')), s => path.join(this.root, s));
   }
 
   openSubdir(subdir: string) {
-    this.openDir.emit(path.join(this.root, subdir))
+    this.openDir.emit(path.join(this.root, subdir));
   }
 }

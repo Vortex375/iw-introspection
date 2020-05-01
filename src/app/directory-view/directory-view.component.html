@@ -1,4 +1,7 @@
-<ul>
-  <li *ngFor="let dir of subdirs; index as i" (click)="openSubdir(dir, i)" [ngClass]="{ active: i === activeDirectory }">{{dir}}</li>
-</ul>
+<mat-action-list>
+  <ng-container *ngFor="let dir of subdirs; index as i">
+    <button mat-list-item (click)="openSubdir(dir, i)" [ngClass]="{ active: i === activeDirectory }">{{dir}}</button>
+    <mat-divider></mat-divider>
+  </ng-container>
+</mat-action-list>
 <app-record-view *ngFor="let rec of records" [recordName]="rec"></app-record-view>

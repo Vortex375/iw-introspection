@@ -7,18 +7,36 @@ import { DirectoryViewComponent } from './directory-view/directory-view.componen
 import { DirectoryPaneComponent } from './directory-pane/directory-pane.component';
 import { RecordViewComponent } from './record-view/record-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditRecordComponent } from './edit-record/edit-record.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectoryViewComponent,
     DirectoryPaneComponent,
-    RecordViewComponent
+    RecordViewComponent,
+    EditRecordComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatCardModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    TextFieldModule,
+    MatListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

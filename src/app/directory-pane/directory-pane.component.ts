@@ -36,6 +36,7 @@ export class DirectoryPaneComponent implements OnInit {
   }
 
   setDir(index: number, path: string) {
+    this.nodeMode = false;
     if (index > this.dirs.length) {
       return;
     }
@@ -45,7 +46,6 @@ export class DirectoryPaneComponent implements OnInit {
     if (index < this.dirs.length) {
       this.dirs.splice(index, this.dirs.length - index);
     }
-    this.nodeMode = false;
     this.dirs.push(path);
   }
 

@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { DeepstreamService } from '../deepstream.service';
 
-import * as path from 'path-browserify'
+import * as path from 'path-browserify';
 import { DeepstreamClient } from '@deepstream/client';
 import { Record } from '@deepstream/client/dist/record/record';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { EditRecordComponent } from '../edit-record/edit-record.component';
 
 @Component({
   selector: 'app-record-view',
@@ -20,7 +22,8 @@ export class RecordViewComponent implements OnInit, OnDestroy {
   content: string;
   private record: Record;
 
-  constructor(private dsService: DeepstreamService) {
+  constructor(private dsService: DeepstreamService,
+              private bottomSheet: MatBottomSheet) {
     this.ds = dsService.getDeepstream();
   }
 
@@ -39,6 +42,13 @@ export class RecordViewComponent implements OnInit, OnDestroy {
       this.record.discard();
       this.record = undefined;
     }
+  }
+
+  editRecord() {
+    this.bottomSheet.open(EditRecordComponent, {
+      data: { recordName: this.recordName },
+      hasBackdrop: true,
+    });
   }
 
   private update(data) {

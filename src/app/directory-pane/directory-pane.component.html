@@ -1,11 +1,18 @@
-<ul>
-  <li (click)="setDir(0, 'iw-introspection/records')">records/</li>
-  <li (click)="setDir(0, 'iw-introspection/rpcs')">rpcs/</li>
-  <li (click)="setDir(0, 'iw-introspection/channels')">channels/</li>
-  <li (click)="showNodes()" [ngClass]="{ active: nodeMode }">nodes/</li>
-</ul>
+<mat-action-list style="margin: 0 0.5rem">
+  <button mat-list-item (click)="setDir(0, 'iw-introspection/records')">records/</button>
+  <mat-divider></mat-divider>
+  <button mat-list-item (click)="setDir(0, 'iw-introspection/rpcs')">rpcs/</button>
+  <mat-divider></mat-divider>
+  <button mat-list-item (click)="setDir(0, 'iw-introspection/channels')">channels/</button>
+  <mat-divider></mat-divider>
+  <button mat-list-item (click)="showNodes()" [ngClass]="{ active: nodeMode }">nodes/</button>
+  <mat-divider></mat-divider>
+</mat-action-list>
 <ng-container *ngIf=" ! nodeMode">
-  <app-directory-view *ngFor="let dir of dirs, index as i" [root]="dir" (openDir)="setDir(i + 1, $event)"></app-directory-view>
+  <ng-container *ngFor="let dir of dirs, index as i">
+    <mat-divider [vertical]="true"></mat-divider>
+    <app-directory-view [root]="dir" (openDir)="setDir(i + 1, $event)"></app-directory-view>
+  </ng-container>
 </ng-container>
 <div *ngIf="nodeMode" class="node-view">
   <app-record-view *ngFor="let node of nodes" [recordName]="node"></app-record-view>

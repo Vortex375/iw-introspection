@@ -3,7 +3,7 @@ import { DeepstreamService } from '../deepstream.service';
 
 import * as path from 'path-browserify';
 import * as _ from 'lodash';
-import { Client } from '@deepstream/client';
+import { DeepstreamClient } from '@deepstream/client';
 
 const INDEX_RECORD = '.iw-index';
 
@@ -14,7 +14,7 @@ const INDEX_RECORD = '.iw-index';
 })
 export class DirectoryViewComponent implements OnInit {
 
-  private readonly ds: Client;
+  private readonly ds: DeepstreamClient;
 
   @Output()
   openDir: EventEmitter<string> = new EventEmitter();

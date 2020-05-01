@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
 
-import fuckthis, { Client } from '@deepstream/client';
-import { Options } from '@deepstream/client/dist/client-options';
-const deepstream: (url: string, options?: Partial<Options>) => Client = fuckthis as any;
+import { DeepstreamClient } from '@deepstream/client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeepstreamService {
 
-  private readonly ds: Client;
+  private readonly ds: DeepstreamClient;
 
   constructor() {
     const hostname = window.location.hostname;
-    this.ds = deepstream(hostname + ':6020');
+    this.ds = new DeepstreamClient(hostname + ':6020');
     this.ds.login();
   }
 
-  getDeepstream(): Client {
+  getDeepstream(): DeepstreamClient {
     return this.ds;
   }
 }

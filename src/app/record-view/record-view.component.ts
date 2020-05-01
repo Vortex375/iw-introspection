@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { DeepstreamService } from '../deepstream.service';
 
 import * as path from 'path-browserify'
-import { Client } from '@deepstream/client';
+import { DeepstreamClient } from '@deepstream/client';
 import { Record } from '@deepstream/client/dist/record/record';
 
 @Component({
@@ -12,7 +12,7 @@ import { Record } from '@deepstream/client/dist/record/record';
 })
 export class RecordViewComponent implements OnInit, OnDestroy {
 
-  private readonly ds: Client;
+  private readonly ds: DeepstreamClient;
 
   @Input()
   recordName: string;

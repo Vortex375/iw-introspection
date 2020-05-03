@@ -1,0 +1,32 @@
+:host {
+  flex: none;
+  margin-bottom: 0.5rem;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  margin-right: 1em;
+}
+
+.status-indicator.inactive {
+  background-color: #9E9E9E;
+}
+
+.status-indicator.ok {
+  background-color: #4CAF50;
+}
+
+.status-indicator.busy {
+  background-color: #673AB7;
+}
+
+.status-indicator.problem {
+  background-color: #FDD835;
+}
+
+.status-indicator.error {
+  background-color: #E53935;
+}

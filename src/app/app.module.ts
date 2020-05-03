@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+import { NodeViewComponent } from './node-view/node-view.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import {MatDividerModule} from '@angular/material/divider';
     DirectoryViewComponent,
     DirectoryPaneComponent,
     RecordViewComponent,
-    EditRecordComponent
+    EditRecordComponent,
+    NodeViewComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatInputModule,
     TextFieldModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 <form [formGroup]="form">
   <mat-form-field appearance="outline" style="width: 100%">
     <mat-label>{{basename}}</mat-label>
-    <textarea matInput formControlName="record" cdkTextareaAutosize [cdkAutosizeMinRows]="10" [cdkAutosizeMaxRows]="25"></textarea>
+    <textarea matInput formControlName="record" class="edit-record" cdkTextareaAutosize [cdkAutosizeMinRows]="10" [cdkAutosizeMaxRows]="25"></textarea>
   </mat-form-field>
 </form>
 <button mat-button color="primary" [disabled]=" ! form.dirty || ! form.valid" (click)="saveRecord()">Save</button>

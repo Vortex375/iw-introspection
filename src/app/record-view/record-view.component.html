@@ -1,4 +1,14 @@
 <mat-card>
-  <mat-card-subtitle><span>{{basename}}</span><button mat-flat-button (click)="editRecord()">Edit</button></mat-card-subtitle>
+  <mat-card-subtitle>
+    <span>{{basename}}</span>
+    <button mat-flat-button (click)="editRecord()">Edit</button>
+    <button mat-flat-button (click)="deleteRecord()">Delete</button>
+  </mat-card-subtitle>
   <mat-card-content><pre>{{content}}</pre></mat-card-content>
 </mat-card>
+
+<ng-template #deleteRecordTemplate>
+  <span>Delete Record {{recordName}}?</span>
+  <button mat-button (click)="deleteRecordYes()">Yes</button>
+  <button mat-button (click)="deleteRecordNo()">No</button>
+</ng-template>

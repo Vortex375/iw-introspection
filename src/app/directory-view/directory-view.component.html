@@ -5,3 +5,15 @@
   </ng-container>
 </mat-action-list>
 <app-record-view *ngFor="let rec of records" [recordName]="rec"></app-record-view>
+
+<button *ngIf="isRecordView()" mat-button (click)="createRecord()">Create Record</button>
+<ng-template #createRecordTemplate>
+  <form [formGroup]="createRecordForm">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Record Name</mat-label>
+      <input #recordNameInput matInput formControlName="recordName">
+    </mat-form-field>
+    <button mat-button color="primary" (click)="doCreateRecord()">Create</button>
+  </form>
+
+</ng-template>

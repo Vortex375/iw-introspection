@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, TemplateRef } from '@angular/core';
 import { DeepstreamService } from '../deepstream.service';
 
 import * as path from 'path-browserify';
@@ -16,10 +16,13 @@ export class RecordViewComponent implements OnInit, OnDestroy {
 
   private readonly ds: DeepstreamClient;
 
-  @Input()
-  recordName: string;
+  @Input() recordName: string;
+
   basename: string;
   content: string;
+
+  @ViewChild('deleteRecordTemplate') deleteRecordTemplate: TemplateRef<any>;
+
   private record: Record;
 
   constructor(private dsService: DeepstreamService,
@@ -49,6 +52,21 @@ export class RecordViewComponent implements OnInit, OnDestroy {
       data: { recordName: this.recordName },
       hasBackdrop: true,
     });
+  }
+
+  deleteRecord() {
+    this.bottomSheet.open(this.deleteRecordTemplate, {
+      hasBackdrop: true
+    });
+  }
+
+  deleteRecordYes() {
+    this.record.delete();
+    this.bottomSheet.dismiss();
+  }
+
+  deleteRecordNo() {
+    this.bottomSheet.dismiss();
   }
 
   private update(data) {

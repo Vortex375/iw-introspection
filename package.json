@@ -24,7 +24,7 @@
     "@deepstream/client": "^5.1.10",
     "buffer": "^5.4.3",
     "core-js": "^3.3.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "path-browserify": "^1.0.0",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",

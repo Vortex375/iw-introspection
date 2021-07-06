@@ -21,7 +21,7 @@
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
-    "@deepstream/client": "^5.1.10",
+    "@deepstream/client": "^5.2.1",
     "buffer": "^5.4.3",
     "core-js": "^3.3.4",
     "lodash": "^4.17.15",

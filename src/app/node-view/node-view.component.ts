@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Record } from '@deepstream/client/dist/record/record';
+import { Record } from '@deepstream/client/dist/src/record/record';
 import { DeepstreamService } from '../deepstream.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { DeepstreamClient } from '@deepstream/client';

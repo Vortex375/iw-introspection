@@ -2,8 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheet } from '@angular/material/bottom-sheet';
 import { FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { DeepstreamService } from '../deepstream.service';
-import { Record } from '@deepstream/client/dist/record/record';
-import * as path from 'path-browserify'
+import { Record } from '@deepstream/client/dist/src/record/record';
+import * as path from 'path-browserify';
 
 export interface EditRecordData {
   recordName: string;

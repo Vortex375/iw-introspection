@@ -3,7 +3,7 @@ import { DeepstreamService } from '../deepstream.service';
 
 import * as path from 'path-browserify';
 import { DeepstreamClient } from '@deepstream/client';
-import { Record } from '@deepstream/client/dist/record/record';
+import { Record } from '@deepstream/client/dist/src/record/record';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { EditRecordComponent } from '../edit-record/edit-record.component';
 
